@@ -96,7 +96,7 @@ WanderLust is a comprehensive travel accommodation platform inspired by Airbnb. 
 1. Clone the repository
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Anuraj-dev/WanderLust-Major-Project
    cd WanderLust
    ```
 
