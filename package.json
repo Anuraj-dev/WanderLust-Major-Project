@@ -2,7 +2,7 @@
   "engines": {
     "node": "20.18.0"
   },
-  "name": "Wanderlust Major Project",
+  "name": "wanderlust-major-project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
