@@ -2,7 +2,7 @@
   "engines": {
     "node": "20.18.0"
   },
-  "name": "mega-project-re-visit",
+  "name": "Wanderlust Major Project",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
