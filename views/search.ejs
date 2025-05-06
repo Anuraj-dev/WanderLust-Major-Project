@@ -1,0 +1,107 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container-fluid mt-5 pt-4">
+  <div class="search-results-header mb-4">
+    <h2>Search Results</h2>
+    <div class="search-summary">
+      <% if (results.length === 1) { %>
+      <p>1 listing found</p>
+      <% } else { %>
+      <p><%= results.length %> listings found</p>
+      <% } %>
+
+      <div class="search-filters-summary">
+        <% if (query.location) { %>
+        <span class="search-filter-pill">Location: <%= query.location %></span>
+        <% } %> <% if (query.country) { %>
+        <span class="search-filter-pill">Country: <%= query.country %></span>
+        <% } %> <% if (query.maxPrice) { %>
+        <span class="search-filter-pill"
+          >Max Price: ₹<%= query.maxPrice %></span
+        >
+        <% } %>
+      </div>
+    </div>
+    <a href="/listings" class="btn btn-outline-secondary btn-sm mt-2">
+      <i class="fa-solid fa-arrow-left"></i> Back to all listings
+    </a>
+  </div>
+
+  <!-- Listings Grid -->
+  <div class="listings-grid">
+    <div class="row listings-row">
+      <% for(let listing of results){ %>
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="listing-card-wrapper">
+          <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="listing-card">
+              <!-- Image container with wishlist button -->
+              <div class="image-container">
+                <img
+                  src="<%= listing.image.url %>"
+                  class="listing-img"
+                  alt="<%= listing.title %>" />
+                <button class="wishlist-button" aria-label="Add to wishlist">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+
+              <!-- Listing details -->
+              <div class="listing-details">
+                <div class="listing-header">
+                  <h5 class="listing-title"><%= listing.title %></h5>
+                  <div class="listing-rating">
+                    <i class="fas fa-star"></i>
+                    <span>4.92</span>
+                  </div>
+                </div>
+                <p class="listing-location">
+                  <%= listing.location %>, <%= listing.country %>
+                </p>
+                <p class="listing-category"><%= listing.category %></p>
+                <p class="listing-price">
+                  <span class="price-amount"
+                    >₹<%= listing.price.toLocaleString("en-IN") %></span
+                  >
+                  <span class="price-period">night</span>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<style>
+  .search-results-header {
+    padding: 1rem 0;
+  }
+
+  .search-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .search-summary p {
+    margin-bottom: 0;
+  }
+
+  .search-filters-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .search-filter-pill {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+  }
+</style>

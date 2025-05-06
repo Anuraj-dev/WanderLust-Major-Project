@@ -1,0 +1,253 @@
+/* ---------- Core Variables & Settings ---------- */
+:root {
+  --pink: #ff385c;
+  --divider: #ededed;
+  --text-main: #222;
+  --text-muted: #717171;
+  --shadow-default: 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 6px 20px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 0 2px rgba(255, 56, 92, 0.25);
+  --transition-time: 200ms;
+  --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 32px;
+}
+
+/* ---------- Base Container Styles ---------- */
+.bigbar {
+  height: 3.5rem; /* 56px at default font size */
+  max-width: 720px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-default);
+  background: #fff;
+  margin: 0 auto;
+  position: relative;
+  transition: transform var(--transition-time) var(--transition-curve),
+    box-shadow var(--transition-time) var(--transition-curve),
+    backdrop-filter var(--transition-time) var(--transition-curve);
+  gap: 4px;
+}
+
+/* ---------- Animation Classes ---------- */
+/* Subtle pulse animation for attracting attention */
+.bigbar.pulse-hint {
+  animation: pulse 2s linear infinite;
+}
+
+/* Pause pulse animation on interaction */
+.bigbar.pulse-hint:hover,
+.bigbar.pulse-hint:focus-within {
+  animation-play-state: paused;
+}
+
+/* ---------- Segment Styling ---------- */
+.bigbar .segment {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8px;
+  position: relative;
+}
+
+/* Vertical dividers between segments */
+.bigbar .segment:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background-color: var(--divider);
+}
+
+/* ---------- Label Styling ---------- */
+.bigbar .segment label {
+  font-size: 0.75rem; /* 12px */
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.125rem; /* 2px */
+  text-transform: uppercase;
+  letter-spacing: 0.031rem; /* 0.5px */
+}
+
+/* ---------- Input & Select Styling ---------- */
+.bigbar .segment input,
+.bigbar .segment select {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 1rem; /* 16px */
+  line-height: 1.3;
+  font-family: "Inter", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  color: var(--text-main);
+  caret-color: var(--pink);
+  padding: 0;
+}
+
+/* Placeholder styling with transition */
+.bigbar .segment input::placeholder,
+.bigbar .segment select {
+  color: var(--text-muted);
+  transition: opacity 300ms ease;
+}
+
+/* Fade placeholder when input is focused */
+.bigbar .segment input:focus::placeholder {
+  opacity: 0.5;
+}
+
+/* Custom select styling */
+.bigbar .segment select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23717171' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 1.25rem; /* 20px */
+}
+
+/* ---------- Search Button Styling ---------- */
+.bigbar .search-btn {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+  border-radius: 50%;
+  background-color: var(--pink);
+  border: none;
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+  color: white;
+  transition: transform 120ms ease, filter var(--transition-time);
+  flex-shrink: 0;
+}
+
+.bigbar .search-btn:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.bigbar .search-btn:active {
+  transform: scale(0.95);
+}
+
+/* Syling from navbar */
+.search-btn {
+  background-color: #fe424d;
+  color: white;
+  border-radius: 25px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-btn:hover {
+  background-color: #fe424d;
+  color: white;
+}
+.search-btn i {
+  display: inline-block;
+}
+.search-inp {
+  border-radius: 25px;
+  padding: 0.5rem 3rem 0.5rem 3rem;
+}
+
+.navbar-nav.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+/* ---------- Interactive States ---------- */
+/* Elevate effect when focused */
+.bigbar:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bigbar:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevated);
+  backdrop-filter: blur(2px);
+}
+
+/* Accessibility focus indicators */
+.bigbar .segment input:focus-visible,
+.bigbar .segment select:focus-visible,
+.bigbar .search-btn:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Responsive Styling ---------- */
+@media (max-width: 600px) {
+  .bigbar {
+    height: auto;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .bigbar .segment {
+    width: 100%;
+    padding: 8px;
+  }
+
+  /* Hide labels on mobile */
+  .bigbar .segment label {
+    display: none;
+  }
+
+  /* Remove dividers on mobile */
+  .bigbar .segment::after {
+    display: none;
+  }
+
+  /* Position search button at bottom right on mobile */
+  .bigbar .search-btn {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+  }
+}
+
+/* ---------- Accessibility & Motion Preference ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .bigbar,
+  .bigbar .search-btn,
+  .bigbar .segment input::placeholder {
+    transition: none;
+    animation: none;
+  }
+
+  .bigbar:focus-within {
+    transform: none;
+  }
+
+  .bigbar .search-btn:hover,
+  .bigbar .search-btn:active {
+    transform: none;
+  }
+}
+
+/* ---------- Animations ---------- */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: var(--shadow-default);
+  }
+  50% {
+    box-shadow: var(--shadow-glow);
+  }
+}

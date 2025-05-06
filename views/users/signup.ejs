@@ -1,0 +1,248 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-3 mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <!-- Hero Banner -->
+      <div class="text-center mb-3">
+        <img
+          src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=800"
+          class="img-fluid rounded-3"
+          alt="Adventure awaits"
+          style="max-height: 200px; object-fit: cover; width: 100%" />
+      </div>
+
+      <!-- Glass-morphism Card -->
+      <div
+        class="card border-0 shadow-lg"
+        style="
+          border-radius: 1rem;
+          background-color: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+        ">
+        <div class="card-body p-4 p-md-5">
+          <h1 class="text-center mb-4 fw-bold">Join WanderLust</h1>
+
+          <form
+            method="POST"
+            action="/signup"
+            novalidate
+            class="needs-validation">
+            <!-- Username Field -->
+            <div class="mb-3">
+              <label for="username" class="form-label">
+                <i class="fas fa-user me-2" style="color: #fe424d"></i>Username
+              </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                class="form-control form-control-lg"
+                required
+                aria-describedby="usernameHelp" />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please choose a username</div>
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope me-2" style="color: #fe424d"></i>Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form-control form-control-lg"
+                required
+                aria-describedby="emailHelp" />
+              <div class="invalid-feedback">Please provide a valid email</div>
+              <small id="emailHelp" class="form-text text-muted"
+                >We'll never share your email with anyone else.</small
+              >
+            </div>
+
+            <!-- Password Field with Toggle -->
+            <div class="mb-3 position-relative">
+              <label for="password" class="form-label">
+                <i class="fas fa-lock me-2" style="color: #fe424d"></i>Password
+              </label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control form-control-lg"
+                  required
+                  aria-describedby="passwordHelp"
+                  minlength="8" />
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="togglePassword">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="invalid-feedback">
+                Password must be at least 8 characters
+              </div>
+              <small id="passwordHelp" class="form-text text-muted"
+                >Use at least 8 characters with a mix of letters, numbers &
+                symbols</small
+              >
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-4 position-relative">
+              <label for="confirmPassword" class="form-label">
+                <i class="fas fa-check-double me-2" style="color: #fe424d"></i
+                >Confirm Password
+              </label>
+              <div class="input-group">
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  class="form-control form-control-lg"
+                  required />
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="toggleConfirmPassword">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div class="invalid-feedback">Passwords do not match</div>
+            </div>
+
+            <!-- Terms and Conditions -->
+            <div class="mb-4 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="agreeTerms"
+                required />
+              <label class="form-check-label" for="agreeTerms">
+                I agree to the
+                <a href="#" style="color: #fe424d">Terms of Service</a> and
+                <a href="#" style="color: #fe424d">Privacy Policy</a>
+              </label>
+            </div>
+
+            <!-- Sign Up Button -->
+            <div class="mb-4">
+              <button type="submit" class="btn color-btn w-100 py-2 fw-bold">
+                <i class="fas fa-user-plus me-2"></i>Create Account
+              </button>
+            </div>
+
+            <!-- Divider -->
+            <div class="d-flex align-items-center mb-4">
+              <hr class="flex-grow-1" />
+              <span class="mx-3 text-muted">or sign up with</span>
+              <hr class="flex-grow-1" />
+            </div>
+
+            <!-- Social Sign Up -->
+            <div class="oauth-container mb-4">
+              <div class="d-flex justify-content-center gap-3">
+                <a
+                  href="/auth/google"
+                  class="btn btn-outline-secondary px-3 py-2 d-flex align-items-center gap-2">
+                  <img
+                    src="/images/google-logo.svg"
+                    alt="Google"
+                    width="24"
+                    height="24" />
+                  Google
+                </a>
+                <a
+                  href="/auth/github"
+                  class="btn btn-outline-secondary px-3 py-2 d-flex align-items-center gap-2">
+                  <img
+                    src="/images/github-logo.svg"
+                    alt="GitHub"
+                    width="24"
+                    height="24" />
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- Log In Link -->
+            <div class="text-center">
+              <p class="mb-0">
+                Already have an account?
+                <a
+                  href="/login"
+                  class="text-decoration-none fw-bold"
+                  style="color: #fe424d"
+                  >Log in</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Password visibility toggle
+  document
+    .getElementById("togglePassword")
+    .addEventListener("click", function () {
+      const passwordInput = document.getElementById("password");
+      const icon = this.querySelector("i");
+
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    });
+
+  // Confirm Password visibility toggle
+  document
+    .getElementById("toggleConfirmPassword")
+    .addEventListener("click", function () {
+      const confirmPasswordInput = document.getElementById("confirmPassword");
+      const icon = this.querySelector("i");
+
+      if (confirmPasswordInput.type === "password") {
+        confirmPasswordInput.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+      } else {
+        confirmPasswordInput.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+      }
+    });
+
+  // Form validation
+  const form = document.querySelector("form");
+  const password = document.getElementById("password");
+  const confirmPassword = document.getElementById("confirmPassword");
+
+  form.addEventListener("submit", function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    if (confirmPassword.value !== password.value) {
+      confirmPassword.setCustomValidity("Passwords don't match");
+      event.preventDefault();
+    } else {
+      confirmPassword.setCustomValidity("");
+    }
+
+    form.classList.add("was-validated");
+  });
+</script>

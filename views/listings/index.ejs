@@ -1,0 +1,111 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container-fluid">
+  <!-- Filters Section - Made sticky at the top -->
+  <div class="filters-container sticky-filters bg-white">
+    <div class="filters-wrapper">
+      <div id="filters" class="filters-scroll">
+        <% for(let category of categories) { %>
+        <a
+          href="/listings?category=<%= category %>"
+          class="text-decoration-none">
+          <div
+            class="filter-item <%= activeCategory === category ? 'active' : '' %>">
+            <div class="filter-icon">
+              <% if(category === "Trending") { %>
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <% } else if(category === "Rooms") { %>
+              <i class="fa-solid fa-bed"></i>
+              <% } else if(category === "Top Cities") { %>
+              <i class="fa-solid fa-mountain-city"></i>
+              <% } else if(category === "Mountains") { %>
+              <i class="fa-solid fa-mountain"></i>
+              <% } else if(category === "Castles") { %>
+              <i class="fa-brands fa-fort-awesome"></i>
+              <% } else if(category === "Pools") { %>
+              <i class="fa-solid fa-person-swimming"></i>
+              <% } else if(category === "Camping") { %>
+              <i class="fa-solid fa-campground"></i>
+              <% } else if(category === "Farms") { %>
+              <i class="fa-solid fa-cow"></i>
+              <% } else if(category === "Arctic") { %>
+              <i class="fa-solid fa-snowflake"></i>
+              <% } else if(category === "Beach") { %>
+              <i class="fa-solid fa-umbrella-beach"></i>
+              <% } %>
+            </div>
+            <p class="filter-text"><%= category %></p>
+          </div>
+        </a>
+        <% } %>
+      </div>
+
+      <!-- Prices include all fees indicator -->
+      <div class="prices-include-fees">
+        <i class="fa-solid fa-tag price-tag"></i>
+        <span>Prices include all fees</span>
+      </div>
+
+      <% if(activeCategory) { %>
+      <a href="/listings" class="clear-filters-link">
+        <div class="clear-filters-btn">
+          <i class="fa-solid fa-xmark"></i>
+          <span>Clear filters</span>
+        </div>
+      </a>
+      <% } %>
+    </div>
+  </div>
+
+  <!-- Listings Grid -->
+  <div class="listings-grid">
+    <% if(allListings.length === 0) { %>
+    <div class="no-listings">
+      <h3>No listings found for "<%= activeCategory %>" category.</h3>
+      <p>Try a different category or <a href="/listings">clear filters</a>.</p>
+    </div>
+    <% } else { %>
+    <div class="row listings-row">
+      <% for(let listing of allListings){ %>
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="listing-card-wrapper">
+          <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="listing-card">
+              <!-- Image container with wishlist button -->
+              <div class="image-container">
+                <img
+                  src="<%= listing.image.url %>"
+                  class="listing-img"
+                  alt="<%= listing.title %>" />
+                <button class="wishlist-button" aria-label="Add to wishlist">
+                  <i class="far fa-heart"></i>
+                </button>
+              </div>
+
+              <!-- Listing details -->
+              <div class="listing-details">
+                <div class="listing-header">
+                  <h5 class="listing-title"><%= listing.title %></h5>
+                  <div class="listing-rating">
+                    <i class="fas fa-star"></i>
+                    <span>4.92</span>
+                  </div>
+                </div>
+                <p class="listing-location"><%= listing.location %></p>
+                <p class="listing-category"><%= listing.category %></p>
+                <p class="listing-price">
+                  <span class="price-amount"
+                    >₹<%= listing.price.toLocaleString("en-IN") %></span
+                  >
+                  <span class="price-period">night</span>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+</div>

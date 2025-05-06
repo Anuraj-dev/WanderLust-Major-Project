@@ -1,0 +1,76 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 pt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <div class="clone-info-card">
+        <i class="fa-solid fa-lightbulb info-icon"></i>
+        <h2 class="mb-4">Just a Demo Clone</h2>
+        <p class="lead">
+          No listings found for your search criteria. This is an Airbnb-inspired
+          demo project with limited data.
+        </p>
+        <p class="mb-4">
+          Explore our existing listings or try a different search query.
+        </p>
+        <div class="action-buttons">
+          <a href="/" class="btn btn-outline-secondary me-2">
+            <i class="fa-solid fa-house"></i> Home
+          </a>
+          <a href="/listings" class="btn btn-primary">
+            <i class="fa-solid fa-map-location-dot"></i> Explore All Listings
+          </a>
+        </div>
+      </div>
+
+      <div class="demo-note mt-5">
+        <h5>About This Project</h5>
+        <p>
+          This WanderLust project is a demonstration of an accommodation booking
+          platform inspired by Airbnb. It's built with Node.js, Express,
+          MongoDB, and EJS templates.
+        </p>
+        <p>
+          Features include listing search, filtering, user authentication, and
+          more.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .clone-info-card {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-top: 2rem;
+  }
+
+  .info-icon {
+    font-size: 3rem;
+    color: #ff385c;
+    margin-bottom: 1.5rem;
+  }
+
+  .action-buttons {
+    margin-top: 2rem;
+  }
+
+  .btn-primary {
+    background-color: #ff385c;
+    border-color: #ff385c;
+  }
+
+  .btn-primary:hover {
+    background-color: #e03151;
+    border-color: #e03151;
+  }
+
+  .demo-note {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+</style>

@@ -1,0 +1,769 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 4rem;
+}
+
+.container {
+  flex: 1;
+}
+
+/* Navbar */
+.navbar {
+  height: rem;
+  background-color: white;
+}
+
+/* icon */
+.fa-location-arrow {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+/* nav-options */
+.nav-link {
+  color: #222222 !important;
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, transform 0.2s ease, font-weight 0.2s ease;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: #fe424d !important;
+  transform: scale(1.05);
+  font-weight: 500;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fe424d;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* footer */
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links :hover {
+  text-decoration: underline;
+}
+
+.f-info-socials i {
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+  margin-top: 0.5rem;
+}
+.fa-facebook:hover {
+  color: #1877f2;
+}
+
+.fa-instagram:hover {
+  color: #e4405f;
+}
+
+.fa-linkedin:hover {
+  color: #0a66c2;
+}
+
+.f-info-links,
+.f-info-socials {
+  width: 100%;
+}
+
+.f-info {
+  text-align: center;
+  height: 6.5rem;
+  display: flex;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Airbnb-inspired styles */
+.listings-container {
+  padding: 24px;
+  max-width: 1760px;
+  margin: 0 auto;
+}
+
+.listings-heading {
+  font-size: 26px;
+  font-weight: 600;
+  color: #222222;
+  margin-bottom: 24px;
+}
+
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.listing-card {
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.listing-link:hover .listing-card {
+  opacity: 0.8;
+}
+
+.image-container {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.listing-img {
+  border-radius: 12px;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.wishlist-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 22px;
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.5));
+  transition: transform 0.2s;
+}
+
+.wishlist-button:hover {
+  transform: scale(1.1);
+}
+
+.listing-details {
+  padding: 5px 0;
+}
+
+.listing-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.rating i {
+  margin-right: 4px;
+  font-size: 12px;
+}
+
+.listing-location,
+.listing-dates {
+  color: #717171;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.listing-price {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #222222;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .listing-img {
+    height: 250px;
+  }
+}
+
+/* add btn color */
+.color-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+  color: white !important;
+}
+
+/* form text */
+.form-text {
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Bold form labels */
+label.form-label {
+  font-weight: 600 !important;
+  color: #000 !important;
+  font-size: 1.05rem !important;
+}
+
+/* Show page */
+.show-img {
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 1.2rem !important;
+}
+
+.show-card {
+  padding: 0 !important;
+  border: none !important;
+}
+
+.show-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.7rem !important;
+  margin-bottom: 1.1rem !important;
+}
+
+.show-btn-size {
+  height: 2.4rem !important;
+}
+
+/* Form styling */
+.listing-form-header {
+  background-color: #fe424d !important;
+  color: white !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #f8f9fa !important;
+  color: #6c757d !important;
+  border-color: #6c757d !important;
+}
+
+/* Improve form field focus state */
+.form-control:focus {
+  border-color: rgba(254, 66, 77, 0.5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(254, 66, 77, 0.25) !important;
+}
+
+/* Form labels with icons */
+.form-label {
+  display: flex;
+  align-items: center;
+  font-weight: 600 !important;
+  color: #222222 !important;
+  margin-bottom: 0.5rem;
+}
+
+.form-label i {
+  margin-right: 0.5rem;
+  color: #fe424d;
+}
+
+/* Airbnb-style Category Dropdown */
+.category-select-container {
+  position: relative;
+}
+
+.category-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.category-select:focus {
+  border-color: #fe424d !important;
+  box-shadow: 0 0 0 2px rgba(254, 66, 77, 0.2) !important;
+}
+
+.category-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #717171;
+  pointer-events: none;
+  transition: transform 0.2s;
+}
+
+.category-select:focus + .category-select-arrow {
+  color: #fe424d;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Category dropdown options styling (browser support varies) */
+.category-select option {
+  padding: 10px;
+  font-weight: 400;
+}
+
+/* Improve form spacing */
+.mb-4 {
+  margin-bottom: 1.5rem !important;
+}
+
+/* Form spacing improvements */
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Button styling */
+.btn.color-btn {
+  padding: 0.5rem 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn.color-btn i,
+.btn-outline-secondary i,
+.btn-outline-primary i,
+.btn-outline-danger i {
+  margin-right: 0.5rem;
+}
+
+/* preview image */
+.preview-img {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+/* OAuth buttons styling */
+.oauth-container {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.oauth-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.oauth-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #aaa;
+  color: #111;
+}
+
+.oauth-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+/* map */
+#map-container {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  margin-bottom: 1rem;
+}
+
+#map {
+  width: 100%;
+  height: 400px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* MapBox custom styling */
+.mapboxgl-popup {
+  max-width: 200px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.mapboxgl-popup-content {
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mapboxgl-popup-content strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #fe424d;
+}
+
+.mapboxgl-popup-content p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.mapboxgl-ctrl-group {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px !important;
+}
+
+/* Airbnb Index Page Styling */
+
+/* Filters Section - Updated with rem units and reduced spacing */
+.filters-container {
+  padding: 0.5rem 0;
+  border-bottom: 0.0625rem solid #ebebeb;
+  margin-bottom: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  z-index: 1020;
+}
+
+/* Custom sticky filters class to position below navbar */
+.sticky-filters {
+  position: sticky;
+  top: 3.7rem; /* Matches the body padding-top */
+}
+
+.filters-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* Clear filters placement */
+.clear-filters-link {
+  text-decoration: none;
+  order: 2; /* Place after prices-include-fees */
+  margin-left: 0;
+}
+
+.filters-scroll {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding-bottom: 0.25rem;
+  margin-bottom: -0.25rem;
+}
+
+.filters-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.filter-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1.5rem;
+  padding: 0.5rem 0;
+  min-width: 3.75rem;
+  color: #717171;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.filter-item.active {
+  color: #222;
+  font-weight: 500;
+}
+
+.filter-item.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1.25rem;
+  height: 0.125rem;
+  background-color: #222;
+  border-radius: 0.0625rem;
+}
+
+.filter-icon {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #717171;
+}
+
+.filter-item.active .filter-icon {
+  color: #fe424d;
+}
+
+.filter-item:hover {
+  color: #222;
+}
+
+.filter-text {
+  font-size: 0.75rem;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.clear-filters-btn {
+  display: flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border: 0.0625rem solid #dddddd;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  color: #222;
+  transition: all 0.2s ease;
+}
+
+.clear-filters-btn i {
+  margin-right: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.clear-filters-btn:hover {
+  background-color: #f7f7f7;
+}
+
+/* Listing Cards - Converting to rem units */
+.listings-grid {
+  padding: 1rem 0 2.5rem;
+}
+
+.listings-row {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.listings-row > div {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.listing-card-wrapper {
+  height: 100%;
+}
+
+.listing-card {
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.listing-link:hover .listing-card {
+  transform: translateY(-0.125rem);
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 0.5rem;
+}
+
+.listing-img {
+  border-radius: 0.875rem;
+  width: 100%;
+  height: 16.25rem;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.wishlist-button {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  font-size: 1.375rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.wishlist-button:hover {
+  transform: scale(1.1);
+  color: #fe424d;
+}
+
+.listing-details {
+  padding: 0.375rem 0;
+}
+
+.listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.25rem;
+}
+
+.listing-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222222;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+}
+
+.listing-rating {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  margin-left: 0.375rem;
+}
+
+.listing-rating i {
+  color: #fe424d;
+  margin-right: 0.125rem;
+  font-size: 0.75rem;
+}
+
+.listing-location,
+.listing-category {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #717171;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.listing-price {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9375rem;
+}
+
+.price-amount {
+  font-weight: 500;
+  color: #222;
+}
+
+.price-period {
+  font-weight: normal;
+  color: #717171;
+}
+
+.no-listings {
+  text-align: center;
+  padding: 3rem 0;
+  color: #717171;
+}
+
+.no-listings h3 {
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* Prices include all fees indicator */
+.prices-include-fees {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  margin-left: auto;
+  margin-right: 10px;
+  background-color: #f8f9fa;
+  border-radius: 30px;
+  border: 1px solid #e9ecef;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  order: 1;
+}
+
+.prices-include-fees i {
+  color: #ff385c;
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+.prices-include-fees span {
+  color: #222;
+  font-weight: 500;
+}
+
+/* Media queries for responsive behavior */
+@media (max-width: 992px) {
+  .prices-include-fees span {
+    font-size: 0.8rem;
+  }
+
+  .prices-include-fees i {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .prices-include-fees {
+    padding: 6px 12px;
+    margin-right: 5px;
+  }
+
+  .clear-filters-btn span {
+    display: none; /* Hide text on smaller screens */
+  }
+
+  .clear-filters-btn i {
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .prices-include-fees {
+    padding: 5px 10px;
+    background-color: rgba(248, 249, 250, 0.9);
+  }
+
+  .prices-include-fees span {
+    font-size: 0.7rem;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .prices-include-fees i {
+    margin-right: 5px;
+    font-size: 0.7rem; /* Smaller base for fa-2x on small screens */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .filter-item {
+    margin-right: 1.25rem;
+  }
+
+  .listing-img {
+    height: 13.75rem;
+  }
+
+  .prices-include-fees {
+    display: none; /* Hide on mobile or show in a different place */
+  }
+}
+
+@media (max-width: 576px) {
+  .filter-item {
+    margin-right: 0.9375rem;
+    min-width: 3.125rem;
+  }
+
+  .filter-icon {
+    font-size: 1.125rem;
+  }
+
+  .listing-img {
+    height: 12.5rem;
+  }
+}

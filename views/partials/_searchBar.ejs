@@ -1,0 +1,41 @@
+<!-- BigBar Search Component - Airbnb Style -->
+<form action="/search" method="GET" role="search" class="bigbar">
+  <!-- segment 1: Where/Location -->
+  <div class="segment">
+    <label>Where</label>
+    <input 
+      name="location" 
+      type="text" 
+      placeholder="Search by city..."
+      value="<%= typeof query !== 'undefined' && query.location ? query.location : '' %>" />
+  </div>
+  
+  <!-- segment 2: Country -->
+  <div class="segment">
+    <label>Country</label>
+    <select name="country">
+      <option value="">Any</option>
+      <% const countries = ['India','USA','France','Japan','Brazil','United Kingdom','Italy','Thailand','Mexico','United Arab Emirates','Switzerland','Greece','Indonesia','Costa Rica']; %>
+      <% countries.forEach(c => { %>
+        <option value="<%= c %>" <%= (typeof query !== 'undefined' && query.country === c) ? 'selected' : '' %>><%= c %></option>
+      <% }) %>
+    </select>
+  </div>
+  
+  <!-- segment 3: Price -->
+  <div class="segment">
+    <label>Price</label>
+    <input 
+      name="maxPrice" 
+      type="number" 
+      min="0" 
+      placeholder="Max ₹/night"
+      value="<%= typeof query !== 'undefined' && query.maxPrice ? query.maxPrice : '' %>" />
+  </div>
+  
+  <!-- segment 4: Search button -->
+  <button class="search-btn" aria-label="Search">
+    <!-- inline SVG icon -->
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+</form>
