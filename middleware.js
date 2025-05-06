@@ -1,6 +1,6 @@
 const Listing = require("./Models/listing");
 const Review = require("./Models/review");
-const wrapasync = require("./utils/wrapasync");
+const wrapasync = require("./utils/wrapAsync");
 const expressError = require("./utils/expressError.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 
