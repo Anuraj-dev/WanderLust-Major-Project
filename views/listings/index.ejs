@@ -41,12 +41,12 @@
       </div>
 
       <!-- Prices include all fees indicator -->
+      <% if(!activeCategory) { %>
       <div class="prices-include-fees">
         <i class="fa-solid fa-tag price-tag"></i>
         <span>Prices include all fees</span>
       </div>
-
-      <% if(activeCategory) { %>
+      <% } %> <% if(activeCategory) { %>
       <a href="/listings" class="clear-filters-link">
         <div class="clear-filters-btn">
           <i class="fa-solid fa-xmark"></i>

@@ -15,6 +15,7 @@ passport.use(
     async (accessToken, refreshToken, profile, done) => {
       try {
         // console.log("Google profile:", JSON.stringify(profile, null, 2));
+        console.log("New user registered!");
 
         // Find user by googleId
         let user = await User.findOne({ googleId: profile.id });
