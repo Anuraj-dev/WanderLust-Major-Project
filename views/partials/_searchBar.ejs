@@ -1,7 +1,7 @@
 <!-- BigBar Search Component - Airbnb Style -->
 <form action="/search" method="GET" role="search" class="bigbar">
-  <!-- segment 1: Where/Location -->
-  <div class="segment">
+  <!-- segment 1: Where/Location - Always visible -->
+  <div class="segment always-visible">
     <label>Where</label>
     <input 
       name="location" 
@@ -10,8 +10,8 @@
       value="<%= typeof query !== 'undefined' && query.location ? query.location : '' %>" />
   </div>
   
-  <!-- segment 2: Country -->
-  <div class="segment">
+  <!-- segment 2: Country - Hidden on small screens -->
+  <div class="segment hide-on-small">
     <label>Country</label>
     <select name="country">
       <option value="">Any</option>
@@ -22,8 +22,8 @@
     </select>
   </div>
   
-  <!-- segment 3: Price -->
-  <div class="segment">
+  <!-- segment 3: Price - Hidden on small screens -->
+  <div class="segment hide-on-small">
     <label>Price</label>
     <input 
       name="maxPrice" 
@@ -33,9 +33,8 @@
       value="<%= typeof query !== 'undefined' && query.maxPrice ? query.maxPrice : '' %>" />
   </div>
   
-  <!-- segment 4: Search button -->
+  <!-- segment 4: Search button - Always visible -->
   <button class="search-btn" aria-label="Search">
-    <!-- inline SVG icon -->
     <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 </form>

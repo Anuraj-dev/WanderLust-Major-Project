@@ -193,32 +193,30 @@
 @media (max-width: 600px) {
   .bigbar {
     height: auto;
-    flex-direction: column;
+    flex-direction: row; /* Keep row direction for simplified layout */
     border-radius: 16px;
-    padding: 8px;
+    padding: 8px 12px;
     gap: 6px;
+    max-width: 100%;
   }
 
-  .bigbar .segment {
-    width: 100%;
-    padding: 8px;
-  }
-
-  /* Hide labels on mobile */
-  .bigbar .segment label {
+  /* Hide segments with hide-on-small class */
+  .bigbar .segment.hide-on-small {
     display: none;
   }
 
-  /* Remove dividers on mobile */
-  .bigbar .segment::after {
-    display: none;
+  /* Make the always-visible segment take up available space */
+  .bigbar .segment.always-visible {
+    flex: 1;
+    padding: 0;
   }
 
-  /* Position search button at bottom right on mobile */
+  /* Position search button */
   .bigbar .search-btn {
-    position: absolute;
-    right: 12px;
-    bottom: 12px;
+    position: static;
+    margin-left: 8px;
+    width: 2rem;
+    height: 2rem;
   }
 }
 

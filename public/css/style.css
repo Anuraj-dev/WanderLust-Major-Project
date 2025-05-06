@@ -12,8 +12,91 @@ body {
 
 /* Navbar */
 .navbar {
-  height: rem;
+  height: 4rem;
   background-color: white;
+}
+
+/* Search bar positioning for all screen sizes */
+.navbar-nav.search-container.always-visible {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin: 0 0.5rem;
+  /* Ensure search bar is centered on all screen sizes */
+  position: absolute;
+  left: 45%;
+  transform: translateX(-50%);
+  max-width: 720px;
+  width: 40%;
+  z-index: 10;
+}
+
+/* Clear the area in the navbar where the search bar will be positioned */
+.navbar .container-fluid {
+  position: relative;
+  /* Space for brand and menu items on both sides of the centered search bar */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Position brand and toggle button properly */
+.navbar-brand {
+  position: relative;
+  z-index: 20;
+}
+
+.navbar-toggler {
+  position: relative;
+  z-index: 20;
+}
+
+@media (max-width: 767px) {
+  /* Styles for smaller screens */
+  .navbar-nav.search-container.always-visible {
+    max-width: 60%;
+    margin: 0 auto;
+    order: 1;
+  }
+
+  .navbar .container-fluid {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .navbar-brand {
+    order: 0;
+  }
+
+  .navbar-toggler {
+    order: 2;
+  }
+
+  /* Make the bigbar more compact on mobile */
+  .navbar-nav.search-container.always-visible .bigbar {
+    height: 2.8rem;
+    max-width: 100%;
+  }
+}
+
+/* Even smaller screens */
+@media (max-width: 480px) {
+  .navbar-nav.search-container.always-visible {
+    max-width: 80%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  /* Full width search bar below the brand and toggle elements */
+  .navbar .container-fluid {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .navbar-nav.search-container.always-visible {
+    order: 3;
+    flex-basis: 100%;
+  }
 }
 
 /* icon */
