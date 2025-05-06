@@ -87,10 +87,10 @@ async function main() {
   await mongoose.connect(dbUrl, { dbName: db });
 }
 
-//Root path
-// app.get("/", (req, res) => {
-//   res.send("Hi, i am root");
-// });
+// Root path
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
