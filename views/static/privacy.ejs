@@ -1,0 +1,182 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Privacy Policy</h1>
+            <div class="demo-badge my-3">
+              <span class="badge bg-warning text-dark px-3 py-2">
+                <i class="fa-solid fa-code me-2"></i>Demo Project Only
+              </span>
+            </div>
+          </div>
+
+          <div class="disclaimer alert alert-info mb-5">
+            <h4 class="alert-heading">
+              <i class="fa-solid fa-circle-info me-2"></i>Important Notice
+            </h4>
+            <p>
+              <strong>WanderLust is a demo project</strong> created for
+              educational and portfolio purposes by Anuraj Jit Saikia (aka
+              Raja). This is not a real service. No actual user data is stored
+              or used commercially. This project was built to showcase software
+              development and design skills.
+            </p>
+          </div>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-database me-3" style="color: #fe424d"></i
+              >Information We Collect
+            </h2>
+            <p>In a real application, we might collect information like:</p>
+            <ul>
+              <li>
+                Personal identification information (name, email address, phone
+                number, etc.)
+              </li>
+              <li>Account information (username, password)</li>
+              <li>User-generated content (reviews, listings)</li>
+              <li>
+                Technical data (IP address, browser information, device
+                information)
+              </li>
+              <li>Usage data (how you interact with our service)</li>
+            </ul>
+            <p>
+              <strong>However, as this is a demo project</strong>, while the
+              application may appear to collect this information, it is not used
+              for commercial purposes and data persistence is limited to
+              demonstration functionality only.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-gears me-3" style="color: #fe424d"></i>How
+              We Use Your Information
+            </h2>
+            <p>
+              In a commercial application, collected information might be used
+              to:
+            </p>
+            <ul>
+              <li>Provide, maintain, and improve our services</li>
+              <li>Process transactions and bookings</li>
+              <li>Send transactional messages and service updates</li>
+              <li>Respond to comments, questions, and requests</li>
+              <li>
+                Protect against, identify, and prevent fraud and other illegal
+                activity
+              </li>
+              <li>
+                Fulfill other purposes disclosed at the time of collection
+              </li>
+            </ul>
+            <p>
+              <strong>As WanderLust is a demo project</strong>, any information
+              entered is used solely to demonstrate the functionality of the
+              application.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i
+                class="fa-solid fa-shield-halved me-3"
+                style="color: #fe424d"></i
+              >Data Storage and Security
+            </h2>
+            <p>This demo application may use technologies such as:</p>
+            <ul>
+              <li>
+                MongoDB (a NoSQL database) for storing listing and user
+                information
+              </li>
+              <li>
+                Cookies and local storage for maintaining sessions and user
+                preferences
+              </li>
+              <li>Cloudinary for image storage and processing</li>
+            </ul>
+            <p>
+              <strong>Important:</strong> While we've implemented security
+              measures appropriate for a demo project, WanderLust is not
+              designed for production use or storing sensitive personal
+              information.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-handshake me-3" style="color: #fe424d"></i
+              >Third-Party Services
+            </h2>
+            <p>
+              This demo application may integrate with third-party services
+              including:
+            </p>
+            <ul>
+              <li>Mapbox for maps and geolocation services</li>
+              <li>Authentication providers like Google and GitHub for OAuth</li>
+              <li>Cloudinary for image storage</li>
+              <li>MongoDB Atlas for database services</li>
+            </ul>
+            <p>
+              These integrations are implemented for demonstration purposes only
+              and showcase integration capabilities.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-envelope me-3" style="color: #fe424d"></i
+              >Contact Information
+            </h2>
+            <p>
+              This project was created by Anuraj Jit Saikia (Raja) as a
+              portfolio project.
+            </p>
+            <p>For questions about this demo project, you can reach out via:</p>
+            <ul>
+              <li>
+                GitHub:
+                <a href="https://github.com/Anuraj-dev" target="_blank"
+                  >github.com/Anuraj-dev</a
+                >
+              </li>
+              <li>Demo purposes only</li>
+            </ul>
+          </section>
+
+          <div class="text-center mt-5">
+            <a href="<%= referer %>" class="btn btn-outline-primary">
+              <i class="fa-solid fa-arrow-left me-2"></i>Go Back
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .demo-badge {
+    font-size: 1.1rem;
+  }
+
+  section {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 2rem;
+  }
+
+  section h2 {
+    color: #333;
+    margin-bottom: 1.2rem;
+  }
+</style>

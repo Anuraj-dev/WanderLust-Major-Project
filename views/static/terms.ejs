@@ -1,0 +1,200 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Terms of Service</h1>
+            <div class="demo-badge my-3">
+              <span class="badge bg-warning text-dark px-3 py-2">
+                <i class="fa-solid fa-code me-2"></i>Demo Project Only
+              </span>
+            </div>
+          </div>
+
+          <div class="disclaimer alert alert-info mb-5">
+            <h4 class="alert-heading">
+              <i class="fa-solid fa-circle-info me-2"></i>Important Notice
+            </h4>
+            <p>
+              <strong>WanderLust is a demo project</strong> created for
+              educational and portfolio purposes by Anuraj Jit Saikia (aka
+              Raja). This is not a real service. No actual user data is stored
+              or used commercially. This project was built to showcase software
+              development and design skills.
+            </p>
+          </div>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-handshake me-3" style="color: #fe424d"></i
+              >Introduction and Acceptance
+            </h2>
+            <p>
+              Welcome to WanderLust, a demonstration project that simulates an
+              accommodation booking platform inspired by Airbnb.
+            </p>
+            <p>
+              By accessing or using the WanderLust demo application, you agree
+              to these Terms of Service, which are designed to illustrate how
+              terms would be structured in a commercial application.
+            </p>
+            <p>
+              <strong>Please note:</strong> As this is a demonstration project,
+              these terms are for illustrative purposes only and do not
+              constitute a legally binding agreement.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i
+                class="fa-solid fa-map-location-dot me-3"
+                style="color: #fe424d"></i
+              >Use of WanderLust
+            </h2>
+            <p>In this demonstration project:</p>
+            <ul>
+              <li>
+                You may view and interact with simulated listings and reviews
+              </li>
+              <li>You may create an account and manage your profile</li>
+              <li>
+                You may create and manage demonstration listings and reviews
+              </li>
+              <li>
+                You understand that all functionalities are for demonstration
+                purposes only
+              </li>
+            </ul>
+            <p>
+              Any content you create within the WanderLust demo is intended for
+              testing and demonstration purposes only. In a real application,
+              users would be required to provide accurate, lawful, and
+              non-infringing content.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-user-shield me-3" style="color: #fe424d"></i
+              >Account Responsibility
+            </h2>
+            <p>While using the WanderLust demo, you may:</p>
+            <ul>
+              <li>
+                Create a demo account with a username, email, and password
+              </li>
+              <li>Sign in using OAuth providers like Google or GitHub</li>
+              <li>Maintain the security of your account credentials</li>
+            </ul>
+            <p>
+              <strong>Remember:</strong> As this is a demonstration project, we
+              recommend not using sensitive or personal passwords that you use
+              for other services.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i
+                class="fa-solid fa-scale-balanced me-3"
+                style="color: #fe424d"></i
+              >Limitations of Liability
+            </h2>
+            <p>
+              The WanderLust demo project is provided "as is," without warranty
+              of any kind. As this is a demonstration:
+            </p>
+            <ul>
+              <li>The service may not be continuously available</li>
+              <li>Features may change or be removed without notice</li>
+              <li>Data may be reset or deleted periodically</li>
+              <li>
+                We are not liable for any loss or damage arising from your use
+                of this demo application
+              </li>
+            </ul>
+            <p>
+              This project is not intended for production use or for storing
+              sensitive personal information.
+            </p>
+          </section>
+
+          <section class="mb-5">
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-ban me-3" style="color: #fe424d"></i
+              >Termination and Suspension
+            </h2>
+            <p>For demonstration purposes, we reserve the right to:</p>
+            <ul>
+              <li>
+                Terminate or suspend access to the WanderLust demo at any time
+              </li>
+              <li>Remove any content or accounts for any or no reason</li>
+              <li>Modify or discontinue the service without notice</li>
+            </ul>
+            <p>
+              As this is a non-commercial project, all features and content are
+              subject to change or removal as the project evolves.
+            </p>
+          </section>
+
+          <section>
+            <h2 class="fw-bold">
+              <i class="fa-solid fa-comments me-3" style="color: #fe424d"></i
+              >Contact and Feedback
+            </h2>
+            <p>
+              This project was created by Anuraj Jit Saikia (Raja) as a
+              portfolio project.
+            </p>
+            <p>
+              Feedback on this demonstration project is welcome and can help
+              improve future portfolio projects.
+            </p>
+            <p>
+              For questions or feedback about this demo project, you can reach
+              out via:
+            </p>
+            <ul>
+              <li>
+                GitHub:
+                <a href="https://github.com/Anuraj-dev" target="_blank"
+                  >github.com/Anuraj-dev</a
+                >
+              </li>
+              <li>Demo purposes only</li>
+            </ul>
+          </section>
+
+          <div class="text-center mt-5">
+            <a href="<%= referer %>" class="btn btn-outline-primary">
+              <i class="fa-solid fa-arrow-left me-2"></i>Go Back
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .demo-badge {
+    font-size: 1.1rem;
+  }
+
+  section {
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-bottom: 2rem;
+  }
+
+  section h2 {
+    color: #333;
+    margin-bottom: 1.2rem;
+  }
+</style>

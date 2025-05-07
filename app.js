@@ -21,6 +21,7 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const searchRouter = require("./routes/search.js");
+const staticRouter = require("./routes/static.js");
 
 // Setup app
 app.set("view engine", "ejs");
@@ -103,6 +104,7 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 app.use("/", searchRouter); // Add the search routes
+app.use("/", staticRouter); // Add the static routes
 
 app.all("*", (req, res, next) => {
   next(new expressError(404, "Page not found!!"));
