@@ -11,15 +11,74 @@
   </div>
   
   <!-- segment 2: Country - Hidden on small screens -->
-  <div class="segment hide-on-small">
+  <div class="segment hide-on-small country-segment">
     <label>Country</label>
-    <select name="country">
-      <option value="">Any</option>
-      <% const countries = ['India','USA','France','Japan','Brazil','United Kingdom','Italy','Thailand','Mexico','United Arab Emirates','Switzerland','Greece','Indonesia','Costa Rica']; %>
-      <% countries.forEach(c => { %>
-        <option value="<%= c %>" <%= (typeof query !== 'undefined' && query.country === c) ? 'selected' : '' %>><%= c %></option>
-      <% }) %>
-    </select>
+    <div class="custom-dropdown-container">
+      <div class="custom-dropdown-selected" tabindex="0">
+        <span class="selected-flag">
+          <% 
+          const selectedCountryCode = typeof query !== 'undefined' && query.country ? 
+            (countries.find(c => c.name === query.country)?.code || '') : '';
+          %>
+          <% if (selectedCountryCode) { %>
+            <img src="https://flagcdn.com/24x18/<%= selectedCountryCode.toLowerCase() %>.png" 
+                 alt="<%= query.country %> flag">
+          <% } %>
+        </span>
+        <span class="selected-text">
+          <%= typeof query !== 'undefined' && query.country ? query.country : 'Any Country' %>
+        </span>
+        <div class="select-icon">
+          <i class="fa-solid fa-chevron-down"></i>
+        </div>
+      </div>
+
+      <div class="custom-dropdown-options">
+        <div class="dropdown-search">
+          <input type="text" placeholder="Search countries..." class="dropdown-search-input">
+        </div>
+        <div class="dropdown-options-container">
+          <div class="dropdown-option" data-value="">Any Country</div>
+          <% const countries = [
+            {code: 'IN', name: 'India'},
+            {code: 'US', name: 'USA'}, 
+            {code: 'FR', name: 'France'},
+            {code: 'JP', name: 'Japan'},
+            {code: 'BR', name: 'Brazil'},
+            {code: 'GB', name: 'United Kingdom'},
+            {code: 'IT', name: 'Italy'},
+            {code: 'TH', name: 'Thailand'},
+            {code: 'MX', name: 'Mexico'},
+            {code: 'AE', name: 'United Arab Emirates'},
+            {code: 'CH', name: 'Switzerland'},
+            {code: 'GR', name: 'Greece'},
+            {code: 'ID', name: 'Indonesia'},
+            {code: 'CR', name: 'Costa Rica'}
+          ]; %>
+          <% countries.forEach(country => { %>
+            <div class="dropdown-option <%= (typeof query !== 'undefined' && query.country === country.name) ? 'selected' : '' %>" 
+                 data-value="<%= country.name %>" 
+                 data-country-code="<%= country.code %>">
+              <img src="https://flagcdn.com/24x18/<%= country.code.toLowerCase() %>.png" alt="<%= country.name %> flag">
+              <%= country.name %>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+      
+      <!-- Hidden actual select element for form submission -->
+      <select name="country" class="custom-select hidden">
+        <option value="">Any Country</option>
+        <% countries.forEach(country => { %>
+          <option 
+            value="<%= country.name %>" 
+            data-country-code="<%= country.code %>"
+            <%= (typeof query !== 'undefined' && query.country === country.name) ? 'selected' : '' %>>
+            <%= country.name %>
+          </option>
+        <% }) %>
+      </select>
+    </div>
   </div>
   
   <!-- segment 3: Price - Hidden on small screens -->
