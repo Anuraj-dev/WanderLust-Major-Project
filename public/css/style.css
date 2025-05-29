@@ -676,6 +676,10 @@ label.form-label {
   color: #fe424d;
 }
 
+.wishlist-button .fa-solid.fa-heart {
+  color: #fe424d;
+}
+
 .listing-details {
   padding: 0.375rem 0;
 }

@@ -176,3 +176,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize custom dropdown
   setupCustomDropdown();
 });
+
+const wishBtns = document.querySelectorAll(".wishlist-button");
+
+wishBtns.forEach((wishBtn) => {
+  wishBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    event.stopPropagation();
+
+    console.log("Wishlist button clicked, navigation prevented.");
+    const icon = wishBtn.querySelector("i");
+    if (icon.classList.contains("fa-regular")) {
+      icon.classList.remove("fa-regular");
+      icon.classList.add("fa-solid");
+    } else {
+      icon.classList.remove("fa-solid");
+      icon.classList.add("fa-regular");
+    }
+  });
+});
