@@ -32,7 +32,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust2";
-const dbUrl = process.env.ATLASDB_URL;
+// const dbUrl = process.env.ATLASDB_URL;
+const dbUrl = process.env.MONGODB_URL;
 const db = "wanderlust";
 
 const SECRET = process.env.SECRET;
