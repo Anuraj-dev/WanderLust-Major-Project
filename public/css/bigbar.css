@@ -342,6 +342,26 @@
   margin: 0 20px;
 }
 
+/* On desktop, center the search bar to the true page center (not the leftover
+   space between the brand and the right-side links, which is uneven and pulls
+   the bar off-center). This lines it up with page-centered content such as the
+   flash messages. */
+@media (min-width: 768px) {
+  .navbar .container-fluid {
+    position: relative;
+  }
+  .navbar-nav.search-container.always-visible {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    flex: 0 0 auto;
+    width: min(720px, 48vw);
+    z-index: 10;
+  }
+}
+
 /* ---------- Interactive States ---------- */
 /* Elevate effect when focused */
 .bigbar:hover {
