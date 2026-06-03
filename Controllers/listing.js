@@ -40,7 +40,7 @@ module.exports.showListing = async (req, res) => {
     .populate("owner");
   if (!listing) {
     req.flash("error", "This listing no longer exists!!");
-    res.redirect("/listings");
+    return res.redirect("/listings");
   }
   res.render("./listings/show.ejs", { listing });
 };
@@ -54,11 +54,11 @@ module.exports.createListing = async (req, res) => {
     .send();
 
   //we can also write here like {id, title etc} = req.body; but we will use another approach
-  let url = req.file.path;
-  let filename = req.file.filename;
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-  newListing.image = { url, filename };
+  if (req.file) {
+    newListing.image = { url: req.file.path, filename: req.file.filename };
+  }
   newListing.geometry = response.body.features[0].geometry;
   let savedLisiting = await newListing.save();
   // console.log(savedLisiting);
@@ -72,7 +72,7 @@ module.exports.renderEditForm = async (req, res) => {
   const categories = Listing.schema.path("category").enumValues;
   if (!listing) {
     req.flash("error", "This listing no longer exists!!");
-    res.redirect("/listings");
+    return res.redirect("/listings");
   }
   res.render("./listings/edit.ejs", { listing, categories });
 };

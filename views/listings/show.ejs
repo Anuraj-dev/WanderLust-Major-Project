@@ -34,7 +34,7 @@
             <i class="bi bi-person-circle fs-4 me-2 text-primary"></i>
             <div>
               <span class="text-muted small">Hosted by</span>
-              <p class="fs-5 mb-0 fw-semibold"><%= listing.owner.username %></p>
+              <p class="fs-5 mb-0 fw-semibold"><%= listing.owner ? listing.owner.username : "Unknown" %></p>
             </div>
           </div>
           <p class="card-text fs-5 mb-3"><%= listing.description %></p>

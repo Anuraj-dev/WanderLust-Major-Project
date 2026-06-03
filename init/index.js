@@ -37,18 +37,15 @@ const Listing = require("../Models/listing");
 // Fallback mechanism for database connection
 let dbUrl, db;
 
-// Try multiple possible database connection configurations with fallbacks
-if (process.env.ATLASDB_URL) {
-  dbUrl = process.env.ATLASDB_URL;
-  db = process.env.DB_NAME || "wanderlust";
-  console.log("Using Atlas DB connection from environment variables");
-} else {
-  console.log(
-    "ATLASDB_URL not found in environment variables, using local MongoDB"
-  );
-  // dbUrl = "mongodb://127.0.0.1:27017/wanderlust";
-  // db = "wanderlust";
+dbUrl = process.env.MONGODB_URL || process.env.ATLASDB_URL;
+db = process.env.DB_NAME || "wanderlust";
+
+if (!dbUrl) {
+  console.error("No database URL found. Set MONGODB_URL or ATLASDB_URL in .env");
+  process.exit(1);
 }
+
+console.log("Connecting to DB...");
 
 // Connection with enhanced error handling
 async function connectToDatabase() {
@@ -59,23 +56,6 @@ async function connectToDatabase() {
   } catch (err) {
     console.error("Database connection error:", err.message);
 
-    // If connection fails and we were using Atlas, try local as fallback
-    if (dbUrl !== "mongodb://127.0.0.1:27017/wanderlust") {
-      console.log("Attempting to connect to local MongoDB as fallback...");
-      try {
-        await mongoose.connect("mongodb://127.0.0.1:27017/wanderlust", {
-          dbName: "wanderlust",
-        });
-        console.log("Connected to local DB successfully");
-        return true;
-      } catch (localErr) {
-        console.error(
-          "Local database connection also failed:",
-          localErr.message
-        );
-        return false;
-      }
-    }
     return false;
   }
 }
