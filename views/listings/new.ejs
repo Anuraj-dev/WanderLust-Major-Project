@@ -52,10 +52,14 @@
               name="listing[image]"
               class="form-control"
               id="image"
+              accept="image/png, image/jpeg, image/jpg"
               required />
             <small class="form-text text-muted"
               >Upload a high-quality image for better visibility</small
             >
+            <div id="imagePreviewContainer" class="mt-2 d-none">
+              <img id="imagePreview" src="" alt="Image Preview" class="img-thumbnail" style="max-height: 200px;" />
+            </div>
           </div>
 
           <div class="mb-4">
@@ -138,3 +142,21 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("image").addEventListener("change", function () {
+    const file = this.files[0];
+    const preview = document.getElementById("imagePreview");
+    const container = document.getElementById("imagePreviewContainer");
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        container.classList.remove("d-none");
+      };
+      reader.readAsDataURL(file);
+    } else {
+      container.classList.add("d-none");
+    }
+  });
+</script>

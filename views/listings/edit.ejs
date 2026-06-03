@@ -73,10 +73,14 @@
               type="file"
               name="listing[image]"
               class="form-control"
-              id="image" />
+              id="image"
+              accept="image/png, image/jpeg, image/jpg" />
             <small class="form-text text-muted"
               >Leave empty to keep current image</small
             >
+            <div id="newImagePreviewContainer" class="mt-2 d-none">
+              <img id="newImagePreview" src="" alt="New Image Preview" class="img-thumbnail" style="max-height: 200px;" />
+            </div>
           </div>
 
           <div class="mb-4">
@@ -177,3 +181,21 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("image").addEventListener("change", function () {
+    const file = this.files[0];
+    const preview = document.getElementById("newImagePreview");
+    const container = document.getElementById("newImagePreviewContainer");
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        container.classList.remove("d-none");
+      };
+      reader.readAsDataURL(file);
+    } else {
+      container.classList.add("d-none");
+    }
+  });
+</script>
