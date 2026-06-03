@@ -10,9 +10,9 @@ module.exports.index = async (req, res) => {
   let allListings;
 
   if (category) {
-    allListings = await Listing.find({ category });
+    allListings = (await Listing.find({ category })) || [];
   } else {
-    allListings = await Listing.find({});
+    allListings = (await Listing.find({})) || [];
   }
 
   const categories = Listing.schema.path("category").enumValues;

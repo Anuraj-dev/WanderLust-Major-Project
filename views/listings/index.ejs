@@ -59,7 +59,7 @@
 
   <!-- Listings Grid -->
   <div class="listings-grid">
-    <% if(allListings.length === 0) { %>
+    <% if(!allListings || allListings.length === 0) { %>
     <div class="no-listings">
       <h3>No listings found for "<%= activeCategory %>" category.</h3>
       <p>Try a different category or <a href="/listings">clear filters</a>.</p>
