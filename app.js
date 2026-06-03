@@ -31,9 +31,7 @@ app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust2";
-// const dbUrl = process.env.ATLASDB_URL;
-const dbUrl = process.env.MONGODB_URL;
+const dbUrl = process.env.MONGODB_URL || process.env.ATLASDB_URL;
 const db = "wanderlust";
 
 const SECRET = process.env.SECRET;
@@ -116,6 +114,10 @@ app.use((err, req, res, next) => {
   res.status(status).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-  console.log("Server is running on port 8080");
-});
+if (require.main === module) {
+  app.listen(process.env.PORT || 8080, () => {
+    console.log(`Server is running on port ${process.env.PORT || 8080}`);
+  });
+}
+
+module.exports = app;

@@ -1,5 +1,6 @@
-const cloudinary = require("cloudinary").v2;
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinaryLib = require("cloudinary");
+const cloudinary = cloudinaryLib.v2;
+const multerCloudinaryStorage = require("multer-storage-cloudinary");
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -7,12 +8,10 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: {
-    folder: "WanderLust_DEV",
-    allowedFormat: ["png", "jpeg", "jpg"],
-  },
+const storage = multerCloudinaryStorage({
+  cloudinary: cloudinaryLib,
+  folder: "WanderLust_DEV",
+  allowedFormats: ["png", "jpeg", "jpg"],
 });
 
 module.exports = {
