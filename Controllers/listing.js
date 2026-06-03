@@ -57,7 +57,7 @@ module.exports.createListing = async (req, res) => {
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   if (req.file) {
-    newListing.image = { url: req.file.path, filename: req.file.filename };
+    newListing.image = { url: req.file.secure_url, filename: req.file.public_id };
   }
   newListing.geometry = response.body.features[0].geometry;
   let savedLisiting = await newListing.save();
@@ -90,8 +90,8 @@ module.exports.updateListing = async (req, res) => {
 
   if (req.file) {
     updateListing.image = {
-      url: req.file.path,
-      filename: req.file.filename,
+      url: req.file.secure_url,
+      filename: req.file.public_id,
     };
   }
 
