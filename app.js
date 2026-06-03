@@ -4,6 +4,15 @@ if (process.env.NODE_ENV != "production") {
 
 const express = require("express");
 const app = express();
+
+// Trust the reverse proxy (Render/Railway/Heroku/Nginx, etc.) in production so
+// Express reads X-Forwarded-Proto and treats TLS-terminated requests as secure.
+// Without this, the `secure: true` session cookie is never sent and logins
+// never persist behind a proxy.
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
