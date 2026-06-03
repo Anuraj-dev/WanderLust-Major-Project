@@ -48,9 +48,11 @@ const SECRET = process.env.SECRET;
 const store = MongoStore.create({
   mongoUrl: dbUrl,
   dbName: db,
-  crypto: {
-    secret: SECRET,
-  },
+  // NOTE: connect-mongo `crypto` is intentionally disabled. It was encrypting
+  // sessions into blobs that failed to decrypt/parse on the next request
+  // ("Unexpected token 'M', \"MIIC...\" is not valid JSON"), 500-ing every route.
+  // The session cookie is already signed (secret) + httpOnly + secure, so
+  // DB-level encryption added only fragility.
   touchAfter: 24 * 3600,
 });
 
@@ -108,8 +110,16 @@ app.get("/", (req, res) => {
 });
 
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
+  // Guard against a broken/unavailable session: req.flash throws if the session
+  // failed to load, which previously skipped these locals and cascaded into
+  // "success is not defined" / "currUser is not defined" template crashes.
+  try {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+  } catch (e) {
+    res.locals.success = [];
+    res.locals.error = [];
+  }
   res.locals.currUser = req.user;
   next();
 });
