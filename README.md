@@ -1,201 +1,97 @@
-# 🌎 WanderLust - Travel Accommodation Platform
+<p align="center">
+  <img src="public/images/favicon.svg" alt="WanderLust logo" width="88" height="88" />
+</p>
 
-## 📖 Overview
+<h1 align="center">WanderLust</h1>
 
-WanderLust is a comprehensive travel accommodation platform inspired by Airbnb. It allows travelers to discover, book, and list unique accommodations around the world. With an intuitive interface and robust features, WanderLust connects travelers with hosts to create memorable travel experiences.
+<p align="center">
+  An Airbnb-style accommodation site built with Express, MongoDB and EJS.<br />
+  Browse stays by city, country or price, and list your own with a map pin and photos.
+</p>
 
-## ✨ Features
+<p align="center">
+  <a href="https://wanderlust.raja-dev.me">Live demo</a>
+  ·
+  <a href="#installation">Installation</a>
+  ·
+  <a href="#environment-variables">Environment variables</a>
+</p>
 
-### 🏠 Accommodation Listings
+WanderLust is a listing site for places to stay. Visitors search by city, country and maximum price, then open a listing to see its photos, its map and its reviews. Signed-in users create listings, leave star ratings, and edit or delete only the listings they own.
 
-- **Browse Listings**: Explore diverse accommodations categorized by type (Trending, Rooms, Mountains, Castles, etc.)
-- **Detailed Listings**: View comprehensive property information, including descriptions, amenities, and pricing
-- **Interactive Maps**: See exact property locations using MapBox integration with custom markers
-- **Image Galleries**: High-quality images for each property
+It is one server-rendered Express app. Pages are EJS templates, so there is no frontend build step. It needs a MongoDB database, a Cloudinary account for photo uploads, and a Mapbox token for maps and geocoding. Sign-in with Google or GitHub needs an OAuth app from each provider.
 
-### 🔍 Search & Filters
+## What you get
 
-- **Advanced Search**: Filter by location, country, and price range
-- **Category Filters**: Browse properties by specific categories
-- **Search Results**: View summarized search results with filters applied
+- **Listings on a real map.** Saving a listing sends its location and country to the Mapbox geocoding API and stores the first match as a GeoJSON point. The listing page draws that point on a Mapbox map with a custom marker.
+- **Photos on Cloudinary.** Uploads go through multer-storage-cloudinary into a `WanderLust_DEV` folder. The app accepts PNG and JPEG files.
+- **Search by city, country and price.** The search matches the city as a case-insensitive pattern, the country exactly, and the price as a ceiling. It returns up to 50 listings. With no matches, it opens a notice page instead.
+- **Ten categories on the home page.** Trending, Rooms, Top Cities, Mountains, Castles, Pools, Camping, Farms, Arctic and Beach each filter the listings through `?category=`.
+- **Owners control their own listings.** The edit and delete routes check that the signed-in user owns the listing. Joi validates listing and review input before it reaches the database.
+- **Three ways to sign in.** Username and password use passport-local-mongoose. Google and GitHub sign-in reuse an existing account with the same email, or create one without a password. Sessions last seven days and are stored in MongoDB through connect-mongo.
+- **Reviews with star ratings.** Signed-in users rate a listing from 1 to 5 and leave a comment. Only the author of a review can delete it.
 
-### 👤 User Management
+## Installation
 
-- **User Authentication**: Secure signup and login functionality
-- **OAuth Integration**: Login with Google and GitHub accounts
-- **User Profiles**: Manage personal information and listings
-- **Authorization**: Role-based access control for listing management
+You can run WanderLust with Node.js or with Docker Compose. The Node route is quicker to edit and restart. Compose starts MongoDB and Mongo Express for you.
 
-### ⭐ Reviews & Ratings
+| Method | Needs | Starts on |
+| --- | --- | --- |
+| Node.js | Node.js 20 or newer, and a MongoDB database | Port 8080 |
+| Docker Compose | Docker and a `.env` file | Ports 8080, 8081 and 27017 |
 
-- **Property Reviews**: Leave and read reviews for accommodations
-- **Rating System**: Rate properties on a 5-star scale
-- **Owner Responses**: Property owners can engage with reviews
+Whichever route you pick, you need a Cloudinary account, a Mapbox access token and, for social sign-in, a Google and a GitHub OAuth app. Put their values in `.env`, as listed in [Environment variables](#environment-variables).
 
-### 📝 Listing Management
+### Run locally
 
-- **Create Listings**: Hosts can create and publish new property listings
-- **Edit Listings**: Update property details, pricing, and availability
-- **Image Upload**: Cloud-based image storage using Cloudinary
-- **Geolocation**: Automatic geocoding of addresses using MapBox
-
-### 🔐 Security
-
-- **Authentication**: Passport.js integration for secure authentication
-- **Session Management**: Express sessions with MongoDB store
-- **Input Validation**: Joi schema validation for form inputs
-- **Error Handling**: Custom error handling throughout the application
-
-## 🛠️ Technologies Used
-
-### Backend
-
-- **Node.js**: JavaScript runtime environment
-- **Express.js**: Web application framework for Node.js
-- **MongoDB**: NoSQL database for data storage
-- **Mongoose**: MongoDB object modeling for Node.js
-- **Passport.js**: Authentication middleware for Node.js
-- **Joi**: Schema validation library
-
-### Frontend
-
-- **EJS**: Embedded JavaScript templates for server-side rendering
-- **Bootstrap**: Frontend CSS framework for responsive design
-- **MapBox API**: Interactive maps and geocoding
-- **Font Awesome**: Icons and graphics
-
-### Cloud Services
-
-- **Cloudinary**: Cloud storage for images
-- **MongoDB Atlas**: Cloud database service (optional)
-
-### Authentication
-
-- **Passport Local Strategy**: Username/password authentication
-- **Google OAuth 2.0**: Google login integration
-- **GitHub OAuth**: GitHub login integration
-
-### Development Tools
-
-- **dotenv**: Environment variable management
-- **connect-flash**: Flash messages for user notifications
-- **method-override**: HTTP verb support for clients that don't support methods
-
-## 📋 Installation & Setup
-
-### Prerequisites
-
-- Node.js (v20.18.0 recommended)
-- MongoDB
-- Cloudinary account
-- MapBox account
-- Google & GitHub OAuth credentials
-
-### Installation Steps
-
-1. Clone the repository
-
-   ```bash
-   git clone https://github.com/Anuraj-dev/WanderLust-Major-Project
-   cd WanderLust
-   ```
-
-2. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file with the following variables:
-
-   ```
-   NODE_ENV=development
-   ATLASDB_URL=your_mongodb_connection_string
-   SECRET=your_session_secret
-   CLOUD_NAME=your_cloudinary_cloud_name
-   CLOUD_API_KEY=your_cloudinary_api_key
-   CLOUD_API_SECRET=your_cloudinary_api_secret
-   MAP_TOKEN=your_mapbox_token
-   GOOGLE_CLIENT_ID=your_google_client_id
-   GOOGLE_CLIENT_SECRET=your_google_client_secret
-   GITHUB_CLIENT_ID=your_github_client_id
-   GITHUB_CLIENT_SECRET=your_github_client_secret
-   OAUTH_CALLBACK_HOST=http://localhost:8080
-   ```
-
-4. Initialize the database with sample data (optional)
-
-   ```bash
-   node init/index.js
-   ```
-
-5. Start the application
-
-   ```bash
-   node app.js
-   ```
-
-6. Access the application at `http://localhost:8080`
-
-## 🏙️ Project Structure
-
-```
-├── app.js                 # Application entry point
-├── cloudConfig.js         # Cloudinary configuration
-├── middleware.js          # Custom middleware functions
-├── schema.js              # Joi validation schemas
-├── config/                # Configuration files
-│   └── passport.js        # Authentication strategies
-├── Controllers/           # Route controllers
-│   ├── listing.js         # Listing-related controllers
-│   ├── review.js          # Review-related controllers
-│   ├── searchController.js # Search-related controllers
-│   └── user.js            # User-related controllers
-├── init/                  # Database initialization
-│   ├── data.js            # Sample data
-│   └── index.js           # Initialization script
-├── Models/                # Mongoose models
-│   ├── listing.js         # Listing model
-│   ├── review.js          # Review model
-│   └── user.js            # User model
-├── public/                # Static assets
-│   ├── css/               # Stylesheets
-│   ├── images/            # Images
-│   └── js/                # Client-side JavaScript
-├── routes/                # Express routes
-│   ├── listing.js         # Listing routes
-│   ├── review.js          # Review routes
-│   ├── search.js          # Search routes
-│   └── user.js            # User routes
-├── utils/                 # Utility functions
-│   ├── expressError.js    # Custom error handler
-│   └── wrapAsync.js       # Async error wrapper
-└── views/                 # EJS templates
-    ├── includes/          # Reusable template parts
-    ├── layouts/           # Page layouts
-    ├── listings/          # Listing-related pages
-    ├── partials/          # Partial templates
-    └── users/             # User-related pages
+```sh
+git clone https://github.com/Anuraj-dev/WanderLust-Major-Project
+cd WanderLust-Major-Project
+npm install
+cp .env.example .env
 ```
 
-## 🖼️ Screenshots
+Fill in `.env`. Then load the sample data and start the server:
 
-![Uploading image.png…]()
+```sh
+node init/index.js
+npm start
+```
 
+The app listens on http://localhost:8080. The seed script deletes every existing listing before it inserts 29 samples, so run it only on a database you can empty. The samples have no category, so the category filters show nothing for them. They also belong to a fixed user ID, so no account you create can edit or delete them.
 
-## 🚀 Future Enhancements
+### Run with Docker
 
-- **Booking System**: Implement reservation capabilities
-- **Payment Integration**: Add payment processing
-- **Messaging System**: Enable direct communication between hosts and guests
-- **Advanced Filters**: Enhance search functionality with more filter options
-- **Wishlists**: Allow users to save favorite listings
-- **Mobile App**: Develop companion mobile applications
+```sh
+docker compose -f wanderlust.yaml up --build
+```
 
-## 👨‍💻 Contributors
+Compose reads `wanderlust.yaml`, so pass `-f`. It starts the app on port 8080, MongoDB on 27017 and Mongo Express on 8081. Set `MONGODB_USERNAME` and `MONGODB_PASSWORD` in `.env`. Then point `ATLASDB_URL` at the bundled database with `mongodb://<MONGODB_USERNAME>:<MONGODB_PASSWORD>@mongo:27017`.
 
-- Raja (Author)
+### Deploy to Vercel
 
-## 📄 License
+The repo includes `vercel.json`, which routes app requests to `api/index.js`. Add the variables from the table below in your Vercel project settings. Set `OAUTH_CALLBACK_HOST` to your Vercel URL.
 
-This project is licensed under the ISC License.
+## Environment variables
+
+Copy `.env.example` to `.env` and fill it in. Outside production, the app loads `.env` with dotenv. In production, set the variables on your host instead.
+
+| Variable | Purpose |
+| --- | --- |
+| `MONGODB_URL` or `ATLASDB_URL` | MongoDB connection string. If both are set, `MONGODB_URL` wins. The app always uses the `wanderlust` database. |
+| `SECRET` | Signs the session cookie. Use a long random string. |
+| `MAP_TOKEN` | Mapbox access token for the maps and for geocoding. The token reaches the browser, so restrict it to your domains in Mapbox. |
+| `CLOUD_NAME`, `CLOUD_API_KEY`, `CLOUD_API_SECRET` | Cloudinary account for listing photos. |
+| `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` | Google OAuth app. |
+| `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` | GitHub OAuth app. |
+| `OAUTH_CALLBACK_HOST` | Base URL the providers return to, such as `http://localhost:8080`. Register `/auth/google/callback` and `/auth/github/callback` under it in each provider. |
+| `NODE_ENV` | Set to `production` to mark the session cookie secure and trust the reverse proxy. |
+| `PORT` | Port to listen on. Defaults to 8080. |
+
+## Known gaps
+
+There is no booking, payment, messaging or wishlist yet. `npm test` is a placeholder that exits with an error, so the project has no automated tests.
+
+## Credits
+
+Built by Raja. The sample listings use photos from Unsplash, and the search form uses flags from flagcdn.com.
