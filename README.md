@@ -95,3 +95,7 @@ There is no booking, payment, messaging or wishlist yet. `npm test` is a placeho
 ## Credits
 
 Built by Raja. The sample listings use photos from Unsplash, and the search form uses flags from flagcdn.com.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
